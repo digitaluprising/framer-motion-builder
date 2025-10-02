@@ -1,0 +1,45 @@
+---
+description: Animation presets and easing functions
+---
+
+# Animation Presets and Easing Functions
+
+## Preset Categories
+
+The app includes comprehensive animation presets organized by category:
+
+- **Micro-interactions**: Button hover, card lift, icon bounce
+- **Page Transitions**: Slide in, fade & scale effects
+- **Loading States**: Pulse, spinner animations
+- **Attention Grabbers**: Shake, wiggle effects
+- **Smooth Reveals**: Stagger up, morph animations
+
+## Easing Functions
+
+Comprehensive easing library with 60+ functions:
+
+- **Basic**: Linear, ease variations
+- **Back**: Overshoot animations
+- **Elastic**: Bouncy effects
+- **Bounce**: Bouncing animations
+- **Circular**: Circular curve animations
+- **Cubic**: Smooth cubic curves
+- **Exponential**: Exponential curves
+- **Quadratic/Quartic/Quintic**: Power-based curves
+- **Sine**: Sine wave curves
+- **Custom**: Popular easing.net functions
+
+## Usage Patterns
+
+- Use presets as starting points for custom animations
+- Combine different easing functions for complex effects
+- Support both string easings and cubic-bezier arrays
+- Provide visual previews for easing functions
+- Implement proper categorization and filtering
+
+## Custom Animations
+
+- Extend the `AnimationConfig` interface for new properties
+- Add new easing functions to the comprehensive library
+- Create new preset categories as needed
+- Implement proper validation for custom values

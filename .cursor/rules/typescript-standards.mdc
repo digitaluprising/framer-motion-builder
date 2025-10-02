@@ -1,0 +1,40 @@
+---
+globs: *.ts,*.tsx
+---
+
+# TypeScript Standards
+
+## Type Safety
+
+- Always use strict TypeScript configuration
+- Define interfaces for all data structures
+- Use proper typing for Framer Motion props
+- Leverage the centralized `AnimationConfig` interface
+
+## Key Interfaces
+
+- `AnimationConfig` - Main animation configuration structure
+- `EasingFunction` - Easing function definitions with categories
+- `AnimationPreset` - Predefined animation configurations
+- `AnimationControlsProps` - Component prop interfaces
+
+## Import Patterns
+
+- Use absolute imports with `@/` prefix for internal modules
+- Import Framer Motion as `import { motion } from 'framer-motion'`
+- Use named exports for type definitions
+- Group imports: React, external libraries, internal modules, types
+
+## Component Props
+
+- Always define explicit prop interfaces
+- Use `Partial<>` for optional update functions
+- Include proper JSDoc comments for complex props
+- Use discriminated unions for animation types
+
+## Error Handling
+
+- Use proper error boundaries for animation failures
+- Validate easing function values
+- Handle edge cases in animation calculations
+- Provide fallback values for undefined states

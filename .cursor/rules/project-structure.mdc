@@ -1,0 +1,40 @@
+---
+alwaysApply: true
+---
+
+# Framer Motion Builder - Project Structure
+
+This is a Next.js 15 application for prototyping Framer Motion animations with a modern, dark-themed UI.
+
+## Core Architecture
+
+- **Framework**: Next.js 15 with App Router and Turbopack
+- **Styling**: Tailwind CSS v4 with custom dark theme
+- **Animation**: Framer Motion (motion package)
+- **UI Components**: Custom components with Radix UI primitives
+- **TypeScript**: Full type safety with strict configuration
+
+## Key Files
+
+- [src/app/page.tsx](mdc:src/app/page.tsx) - Main application component with AnimationConfig interface
+- [src/app/layout.tsx](mdc:src/app/layout.tsx) - Root layout with IBM Plex fonts and metadata
+- [src/components/AnimationControls.tsx](mdc:src/components/AnimationControls.tsx) - Main controls panel
+- [src/components/AnimationPreview.tsx](mdc:src/components/AnimationPreview.tsx) - Live animation preview
+- [src/types/easings.ts](mdc:src/types/easings.ts) - 60+ easing functions with categories
+- [src/types/presets.ts](mdc:src/types/presets.ts) - Animation presets for common patterns
+
+## Component Structure
+
+- **UI Components**: Located in `src/components/ui/` - Reusable UI primitives
+- **Feature Components**: Main app components in `src/components/`
+- **Types**: TypeScript definitions in `src/types/`
+- **Utils**: Utility functions in `src/lib/`
+
+## Animation System
+
+The app uses a centralized `AnimationConfig` interface that defines:
+- Animation type (hover, click, loop, onMount)
+- Initial and animated property states
+- Transition settings (duration, delay, ease)
+
+All animations are built using Framer Motion's `motion` components with real-time preview capabilities.

@@ -1,0 +1,47 @@
+---
+globs: *.tsx
+---
+
+# Framer Motion Patterns
+
+## Animation Configuration
+
+- Use the centralized `AnimationConfig` interface for all animations
+- Support both string easings and cubic-bezier arrays
+- Implement proper initial/animated state management
+- Use consistent transition patterns
+
+## Motion Components
+
+- Always use `motion.div` for animated elements
+- Apply proper `initial`, `animate`, and `transition` props
+- Use semantic class names for styling
+- Implement proper key props for list animations
+
+## Easing Functions
+
+- Leverage the comprehensive easing library in [src/types/easings.ts](mdc:src/types/easings.ts)
+- Support both built-in Framer Motion easings and custom cubic-bezier
+- Use appropriate easing categories (basic, ease, back, elastic, etc.)
+- Provide visual previews for easing functions
+
+## Animation Types
+
+- **Hover**: Interactive hover effects with smooth transitions
+- **Click**: Immediate feedback animations for user actions
+- **Loop**: Continuous animations for loading states
+- **OnMount**: Entrance animations for page elements
+
+## Performance
+
+- Use `transform` properties (x, y, scale, rotate) for better performance
+- Avoid animating layout properties when possible
+- Implement proper cleanup for loop animations
+- Use `will-change` CSS property for complex animations
+
+## Responsive Design
+
+- Ensure animations work across all screen sizes
+- Use relative units for responsive animations
+- Test animations on mobile devices
+- Implement reduced motion preferences

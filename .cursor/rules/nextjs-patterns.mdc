@@ -1,0 +1,47 @@
+---
+globs: *.tsx,*.ts
+---
+
+# Next.js Patterns
+
+## App Router
+
+- Use App Router structure with `src/app/` directory
+- Implement proper metadata in `layout.tsx`
+- Use server components by default, client components when needed
+- Leverage Next.js 15 features and optimizations
+
+## Performance
+
+- Use Turbopack for faster development builds
+- Implement proper image optimization with Next.js Image component
+- Use dynamic imports for code splitting
+- Optimize bundle size with proper imports
+
+## SEO and Metadata
+
+- Define comprehensive metadata in [src/app/layout.tsx](mdc:src/app/layout.tsx)
+- Use proper favicon configuration
+- Implement Open Graph and Twitter Card metadata
+- Use semantic HTML structure
+
+## Fonts
+
+- Use Next.js font optimization with Google Fonts
+- Implement IBM Plex Sans and IBM Plex Mono
+- Use CSS custom properties for font variables
+- Apply proper font loading strategies
+
+## Styling
+
+- Use Tailwind CSS with PostCSS configuration
+- Implement proper CSS custom properties
+- Use global styles in `globals.css`
+- Apply consistent design tokens
+
+## Development
+
+- Use `npm run dev` with Turbopack for development
+- Implement proper TypeScript configuration
+- Use ESLint for code quality
+- Follow Next.js best practices for file organization

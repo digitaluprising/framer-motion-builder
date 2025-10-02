@@ -96,7 +96,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
 
         {/* Category Filter */}
         <div>
-          <div className="flex flex-wrap gap-4-sm">
+          <div className="flex flex-wrap gap-2">
             {Object.entries(PRESET_CATEGORIES).map(([key, label]) => (
               <button
                 key={key}
@@ -141,7 +141,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                           <span className="ml-2 text-xs text-purple-400">Custom</span>
                         )}
                       </h4>
-                      <div className="flex items-center gap-4-sm">
+                      <div className="flex items-center gap-2">
                         {isCurrentConfig(preset) && (
                           <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                         )}
@@ -159,10 +159,10 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                         )}
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-4-sm line-clamp-2">
+                    <p className="text-xs text-gray-400 mt-2 line-clamp-2">
                       {preset.description}
                     </p>
-                    <div className="flex items-center justify-between mt-4-sm">
+                    <div className="flex items-center justify-between mt-2">
                       <span className="text-xs text-gray-500 capitalize">
                         {preset.category.replace('-', ' ')}
                       </span>
@@ -184,8 +184,8 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
         </div>
 
         {/* Quick Actions */}
-        <div className="pt-4-sm border-t border-[#3a3a3a]">
-          <div className="flex gap-4-sm">
+        <div className="pt-4 border-t border-[#3a3a3a]">
+          <div className="flex gap-2">
             <button
               onClick={() => onPresetSelect({
                 animationType: 'hover',
@@ -221,7 +221,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-4-sm">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Preset Name
                 </label>
                 <input
@@ -235,7 +235,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-4-sm">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Description (optional)
                 </label>
                 <textarea
@@ -248,7 +248,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
               </div>
             </div>
             
-            <div className="flex gap-4 mt-4-lg">
+            <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowSaveDialog(false)}
                 className="flex-1 px-4 py-2 bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-300 rounded-lg transition-colors"

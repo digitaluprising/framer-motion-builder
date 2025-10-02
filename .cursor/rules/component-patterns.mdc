@@ -1,0 +1,54 @@
+---
+globs: *.tsx
+---
+
+# Component Patterns
+
+## Component Structure
+
+- Use functional components with TypeScript
+- Implement proper prop interfaces
+- Use `'use client'` directive for interactive components
+- Export components as default exports
+
+## State Management
+
+- Use `useState` for local component state
+- Implement proper state update functions
+- Use callback patterns for parent-child communication
+- Avoid prop drilling with proper component composition
+
+## Event Handling
+
+- Use proper event handler types
+- Implement debouncing for slider inputs
+- Use controlled components for form inputs
+- Handle edge cases in user interactions
+
+## Component Composition
+
+- Break down complex components into smaller pieces
+- Use compound component patterns where appropriate
+- Implement proper prop forwarding
+- Use render props for flexible component APIs
+
+## Animation Components
+
+- Create reusable animation wrapper components
+- Implement proper animation lifecycle management
+- Use refs for imperative animation control
+- Handle animation cleanup properly
+
+## UI Components
+
+- Use Radix UI primitives for accessibility
+- Implement proper ARIA attributes
+- Use consistent component APIs
+- Provide proper keyboard navigation
+
+## Error Boundaries
+
+- Implement error boundaries for animation failures
+- Provide fallback UI for broken animations
+- Log errors for debugging
+- Gracefully handle invalid animation configurations

@@ -1,0 +1,48 @@
+---
+globs: *.tsx,*.css
+---
+
+# Styling Guidelines
+
+## Design System
+
+- **Theme**: Dark theme with `#0a0a0a` background
+- **Colors**: Blue accent (`#3b82f6`), gray scales for UI
+- **Typography**: IBM Plex Sans (body) and IBM Plex Mono (code)
+- **Spacing**: Consistent 4px grid system
+- **Border Radius**: 8px base, 12px for cards, 50px for circles
+
+## Tailwind CSS Patterns
+
+- Use Tailwind v4 with custom configuration
+- Implement responsive design with mobile-first approach
+- Use semantic color classes (blue-500, gray-300, etc.)
+- Leverage CSS custom properties for theming
+
+## Component Styling
+
+- Use `className` for styling, avoid inline styles
+- Implement proper focus states for accessibility
+- Use consistent spacing with Tailwind utilities
+- Apply proper hover and active states
+
+## Layout Patterns
+
+- Use CSS Grid for main layout (`grid-cols-1 lg:grid-cols-2`)
+- Implement proper responsive breakpoints
+- Use flexbox for component internal layouts
+- Apply consistent padding and margins
+
+## Animation Styling
+
+- Use `transform` properties for animations
+- Implement proper z-index layering
+- Use backdrop blur effects for modals
+- Apply consistent border and shadow patterns
+
+## Dark Theme
+
+- Use dark backgrounds (`bg-[#0a0a0a]`, `bg-[#1a1a1a]`)
+- Implement proper contrast ratios
+- Use subtle borders (`border-[#2a2a2a]`)
+- Apply appropriate text colors for readability

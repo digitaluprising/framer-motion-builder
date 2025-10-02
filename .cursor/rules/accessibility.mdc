@@ -1,0 +1,54 @@
+---
+globs: *.tsx
+---
+
+# Accessibility Guidelines
+
+## ARIA Support
+
+- Use proper ARIA labels for interactive elements
+- Implement ARIA live regions for dynamic content
+- Use semantic HTML elements where appropriate
+- Provide proper focus management for animations
+
+## Keyboard Navigation
+
+- Ensure all interactive elements are keyboard accessible
+- Implement proper tab order for form controls
+- Use appropriate ARIA roles for custom components
+- Provide keyboard shortcuts for common actions
+
+## Motion Preferences
+
+- Respect `prefers-reduced-motion` media query
+- Provide options to disable animations
+- Use subtle animations for accessibility
+- Implement proper fallbacks for motion-sensitive users
+
+## Color and Contrast
+
+- Maintain proper contrast ratios for text
+- Use color as enhancement, not the only indicator
+- Provide alternative indicators for color-coded information
+- Test with color blindness simulators
+
+## Screen Readers
+
+- Provide descriptive labels for animation controls
+- Use proper heading hierarchy
+- Implement proper form labels and descriptions
+- Provide alternative text for visual elements
+
+## Focus Management
+
+- Ensure focus is visible and logical
+- Implement proper focus trapping in modals
+- Use focus indicators that work with animations
+- Provide skip links for main content
+
+## Animation Accessibility
+
+- Keep animations subtle and purposeful
+- Avoid flashing or strobing effects
+- Provide pause/play controls for loop animations
+- Use appropriate animation durations
