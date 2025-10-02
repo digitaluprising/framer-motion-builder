@@ -96,7 +96,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
 
         {/* Category Filter */}
         <div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-4-sm">
             {Object.entries(PRESET_CATEGORIES).map(([key, label]) => (
               <button
                 key={key}
@@ -114,7 +114,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
         </div>
 
         {/* Preset Grid */}
-        <div className="grid grid-cols-1 gap-3 max-h-64 overflow-y-auto">
+        <div className="grid grid-cols-1 gap-4 max-h-64 overflow-y-auto">
           {filteredPresets.length > 0 ? (
             filteredPresets.map((preset) => (
               <div
@@ -126,7 +126,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                     : 'border-[#3a3a3a] bg-[#2a2a2a] hover:border-[#4a4a4a] hover:bg-[#3a3a3a]'
                 }`}
               >
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start gap-4">
                   {/* Thumbnail */}
                   <div className={`w-12 h-12 rounded-lg flex-shrink-0 ${preset.thumbnail} flex items-center justify-center`}>
                     <div className="w-6 h-6 bg-white/20 rounded-sm"></div>
@@ -141,7 +141,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                           <span className="ml-2 text-xs text-purple-400">Custom</span>
                         )}
                       </h4>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center gap-4-sm">
                         {isCurrentConfig(preset) && (
                           <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                         )}
@@ -159,10 +159,10 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                         )}
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">
+                    <p className="text-xs text-gray-400 mt-4-sm line-clamp-2">
                       {preset.description}
                     </p>
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-4-sm">
                       <span className="text-xs text-gray-500 capitalize">
                         {preset.category.replace('-', ' ')}
                       </span>
@@ -184,8 +184,8 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
         </div>
 
         {/* Quick Actions */}
-        <div className="pt-2 border-t border-[#3a3a3a]">
-          <div className="flex space-x-2">
+        <div className="pt-4-sm border-t border-[#3a3a3a]">
+          <div className="flex gap-4-sm">
             <button
               onClick={() => onPresetSelect({
                 animationType: 'hover',
@@ -216,12 +216,12 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
       {/* Save Dialog */}
       {showSaveDialog && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 w-full max-w-md mx-4">
+          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-4-lg w-full max-w-md mx-4">
             <h3 className="text-lg font-semibold text-white mb-4">Save Custom Preset</h3>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-4-sm">
                   Preset Name
                 </label>
                 <input
@@ -235,7 +235,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-4-sm">
                   Description (optional)
                 </label>
                 <textarea
@@ -248,7 +248,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
               </div>
             </div>
             
-            <div className="flex space-x-3 mt-6">
+            <div className="flex gap-4 mt-4-lg">
               <button
                 onClick={() => setShowSaveDialog(false)}
                 className="flex-1 px-4 py-2 bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-300 rounded-lg transition-colors"

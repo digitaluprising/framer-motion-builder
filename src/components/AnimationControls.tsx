@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimationConfig } from '@/app/page';
-import ExpandableSection from './ExpandableSection';
+import ExpandableSection, { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Slider } from './ExpandableSection';
 import PresetSelector from './PresetSelector';
 import EasingSelector from './EasingSelector';
 
@@ -58,14 +58,16 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               X Position
             </label>
-            <input
-              type="range"
-              min="-200"
-              max="200"
-              value={properties.x}
-              onChange={(e) => onUpdate({ x: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+            <div className="relative w-full">
+            <Slider
+              value={[properties.x]}
+              onValueChange={(value) => onUpdate({ x: value[0] })}
+              min={-200}
+              max={200}
+              step={1}
+              className="w-full"
             />
+            </div>
             <div className="text-xs text-gray-400 mt-2">{properties.x}px</div>
           </div>
           
@@ -73,14 +75,16 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Y Position
             </label>
-            <input
-              type="range"
-              min="-200"
-              max="200"
-              value={properties.y}
-              onChange={(e) => onUpdate({ y: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
-            />
+            <div className="relative w-full">
+              <Slider
+                value={[properties.y]}
+                onValueChange={(value) => onUpdate({ y: value[0] })}
+                min={-200}
+                max={200}
+                step={1}
+                className="w-full"
+              />
+            </div>
             <div className="text-xs text-gray-400 mt-2">{properties.y}px</div>
           </div>
         </div>
@@ -90,14 +94,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Scale
             </label>
-            <input
-              type="range"
-              min="0.1"
-              max="3"
-              step="0.1"
-              value={properties.scale}
-              onChange={(e) => onUpdate({ scale: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+            <Slider
+              value={[properties.scale]}
+              onValueChange={(value) => onUpdate({ scale: value[0] })}
+              min={0.1}
+              max={3}
+              step={0.1}
+              className="w-full"
             />
             <div className="text-xs text-gray-400 mt-2">{properties.scale}x</div>
           </div>
@@ -106,13 +109,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Rotation
             </label>
-            <input
-              type="range"
-              min="-360"
-              max="360"
-              value={properties.rotate}
-              onChange={(e) => onUpdate({ rotate: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+            <Slider
+              value={[properties.rotate]}
+              onValueChange={(value) => onUpdate({ rotate: value[0] })}
+              min={-360}
+              max={360}
+              step={1}
+              className="w-full"
             />
             <div className="text-xs text-gray-400 mt-2">{properties.rotate}°</div>
           </div>
@@ -123,13 +126,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Skew X
             </label>
-            <input
-              type="range"
-              min="-45"
-              max="45"
-              value={properties.skewX}
-              onChange={(e) => onUpdate({ skewX: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+            <Slider
+              value={[properties.skewX]}
+              onValueChange={(value) => onUpdate({ skewX: value[0] })}
+              min={-45}
+              max={45}
+              step={1}
+              className="w-full"
             />
             <div className="text-xs text-gray-400 mt-2">{properties.skewX}°</div>
           </div>
@@ -138,13 +141,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Skew Y
             </label>
-            <input
-              type="range"
-              min="-45"
-              max="45"
-              value={properties.skewY}
-              onChange={(e) => onUpdate({ skewY: Number(e.target.value) })}
-              className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+            <Slider
+              value={[properties.skewY]}
+              onValueChange={(value) => onUpdate({ skewY: value[0] })}
+              min={-45}
+              max={45}
+              step={1}
+              className="w-full"
             />
             <div className="text-xs text-gray-400 mt-2">{properties.skewY}°</div>
           </div>
@@ -159,14 +162,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Opacity
           </label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value={properties.opacity}
-            onChange={(e) => onUpdate({ opacity: Number(e.target.value) })}
-            className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+          <Slider
+            value={[properties.opacity]}
+            onValueChange={(value) => onUpdate({ opacity: value[0] })}
+            min={0}
+            max={1}
+            step={0.1}
+            className="w-full"
           />
           <div className="text-xs text-gray-400 mt-2">{properties.opacity}</div>
         </div>
@@ -187,13 +189,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Border Radius
           </label>
-          <input
-            type="range"
-            min="0"
-            max="50"
-            value={properties.borderRadius}
-            onChange={(e) => onUpdate({ borderRadius: Number(e.target.value) })}
-            className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+          <Slider
+            value={[properties.borderRadius]}
+            onValueChange={(value) => onUpdate({ borderRadius: value[0] })}
+            min={0}
+            max={50}
+            step={1}
+            className="w-full"
           />
           <div className="text-xs text-gray-400 mt-2">{properties.borderRadius}px</div>
         </div>
@@ -206,7 +208,7 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
       <div className="p-4 border-b border-[#2a2a2a]">
         <h2 className="text-lg font-semibold text-white">Controls</h2>
       </div>
-      <div className="p-2 flex-1 overflow-y-auto min-h-0">
+      <div className="p-2 flex-1 overflow-y-auto min-h-0 overflow-x-visible">
         <div className="space-y-2">
           {/* Preset Selector */}
           <PresetSelector 
@@ -220,17 +222,25 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Animation Type
               </label>
-              <select
+              <Select
                 value={config.animationType}
-                onChange={(e) => onConfigChange({ animationType: e.target.value as AnimationConfig['animationType'] })}
-                className="w-full p-3 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                onValueChange={(value) => onConfigChange({ animationType: value as AnimationConfig['animationType'] })}
               >
-                {animationTypes.map((type) => (
-                  <option key={type.value} value={type.value}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full bg-[#2a2a2a] border-[#3a3a3a] text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                  <SelectValue placeholder="Select animation type" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#2a2a2a] border-[#3a3a3a]">
+                  {animationTypes.map((type) => (
+                    <SelectItem 
+                      key={type.value} 
+                      value={type.value}
+                      className="text-white hover:bg-[#3a3a3a] focus:bg-[#3a3a3a]"
+                    >
+                      {type.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </ExpandableSection>
 
@@ -261,14 +271,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                   Duration (seconds)
                 </label>
-                <input
-                  type="range"
-                  min="0.1"
-                  max="3"
-                  step="0.1"
-                  value={config.transition.duration}
-                  onChange={(e) => updateTransition({ duration: Number(e.target.value) })}
-                  className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+                <Slider
+                  value={[config.transition.duration]}
+                  onValueChange={(value) => updateTransition({ duration: value[0] })}
+                  min={0.1}
+                  max={3}
+                  step={0.1}
+                  className="w-full"
                 />
                 <div className="text-xs text-gray-400 mt-2">{config.transition.duration}s</div>
               </div>
@@ -277,14 +286,13 @@ export default function AnimationControls({ config, onConfigChange }: AnimationC
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                   Delay (seconds)
                 </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="2"
-                  step="0.1"
-                  value={config.transition.delay}
-                  onChange={(e) => updateTransition({ delay: Number(e.target.value) })}
-                  className="w-full h-2 bg-[#2a2a2a] rounded-lg appearance-none cursor-pointer slider"
+                <Slider
+                  value={[config.transition.delay]}
+                  onValueChange={(value) => updateTransition({ delay: value[0] })}
+                  min={0}
+                  max={2}
+                  step={0.1}
+                  className="w-full"
                 />
                 <div className="text-xs text-gray-400 mt-2">{config.transition.delay}s</div>
               </div>

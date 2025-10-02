@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import AnimationPreview from '@/components/AnimationPreview';
 import AnimationControls from '@/components/AnimationControls';
+import Logo from '@/components/Logo';
 
 export interface AnimationConfig {
   // Animation type
@@ -82,19 +84,54 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen bg-[#0a0a0a] overflow-hidden">
+    <motion.div 
+      className="h-screen bg-[#0a0a0a] overflow-hidden"
+      initial={{ 
+        opacity: 0, 
+        scale: 1.1, 
+        filter: 'blur(10px)' 
+      }}
+      animate={{ 
+        opacity: 1, 
+        scale: 1, 
+        filter: 'blur(0px)' 
+      }}
+      transition={{
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1], // Dramatic and elegant easing curve
+        delay: 0.2
+      }}
+    >
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-10 bg-[#0a0a0a] border-b border-[#1a1a1a]">
         <div className="h-16 flex items-center justify-between px-6">
-          <div className="flex items-center space-x-3">
+          <motion.div 
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.3
+            }}
+          >
             <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">FM</span>
+              <Logo />
             </div>
             <h1 className="text-xl font-semibold text-white">
               Motion Builder
             </h1>
-          </div>
-          <div className="flex items-center space-x-4">
+          </motion.div>
+          <motion.div 
+            className="flex items-center gap-2"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.4
+            }}
+          >
             <div className="text-sm text-gray-400">
               Prototype animations with Framer Motion
             </div>
@@ -104,22 +141,40 @@ export default function Home() {
             >
               Credits
             </button>
-          </div>
+          </motion.div>
         </div>
       </header>
       
       {/* Main Content - Full height minus header */}
       <main className="pt-16 h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-4rem)] p-2 gap-2">
-          {/* Preview - Top on mobile, Right on desktop */}
-          <div className="order-1 lg:order-2 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]">
-            <AnimationPreview config={config} />
-          </div>
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-4rem)] p-3 gap-3">
           {/* Controls - Bottom on mobile, Left on desktop */}
-          <div className="order-2 lg:order-1 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]">
+          <motion.div 
+            className="order-2 lg:order-1 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.5
+            }}
+          >
             <AnimationControls config={config} onConfigChange={updateConfig} />
-          </div>
+          </motion.div>
+          
+          {/* Preview - Top on mobile, Right on desktop */}
+          <motion.div 
+            className="order-1 lg:order-2 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.6
+            }}
+          >
+            <AnimationPreview config={config} />
+          </motion.div>
         </div>
       </main>
 
@@ -139,7 +194,7 @@ export default function Home() {
               </button>
             </div>
             
-            <div className="space-y-4 text-sm text-gray-300">
+            <div className="space-y-3 text-sm text-gray-300">
               <div>
                 <h4 className="font-medium text-white mb-2">Built with</h4>
                 <ul className="space-y-1 ml-4">
@@ -192,6 +247,6 @@ export default function Home() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

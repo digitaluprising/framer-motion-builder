@@ -82,9 +82,9 @@ export default function AnimationPreview({ config }: AnimationPreviewProps) {
       <div className="p-4 border-b border-[#2a2a2a]">
         <h3 className="text-lg font-semibold text-white">Preview</h3>
       </div>
-      <div className="flex-1 flex items-center justify-center p-2">
+      <div className="flex-1 flex items-center justify-center p-4-sm">
         <motion.div
-          className="w-32 h-32 flex items-center justify-center text-white font-semibold text-lg cursor-pointer"
+          className="w-32 h-32 flex items-center justify-center text-white font-semibold text-lg cursor-pointer select-none"
           {...(getAnimationProps() as Record<string, unknown>)}
         >
           {config.animationType === 'hover' && 'Hover me!'}

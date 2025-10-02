@@ -65,7 +65,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {/* Search */}
       <div>
         <input
@@ -79,7 +79,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
 
       {/* Category Filter */}
       <div>
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-4-sm">
           {Object.entries(EASING_CATEGORIES).map(([key, label]) => (
             <button
               key={key}
@@ -97,7 +97,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
       </div>
 
       {/* Easing Grid */}
-      <div className="max-h-48 overflow-y-auto space-y-1">
+      <div className="max-h-48 overflow-y-auto space-y-4-sm">
         {filteredEasings.length > 0 ? (
           filteredEasings.map((easing) => (
             <div
@@ -110,7 +110,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
               }`}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-4-sm">
                   {getEasingPreview(easing)}
                   <div>
                     <div className="text-sm font-medium text-white">
@@ -126,7 +126,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
                 )}
               </div>
               {easing.cubicBezier && (
-                <div className="text-xs text-gray-500 mt-1 font-mono">
+                <div className="text-xs text-gray-500 mt-4-sm font-mono">
                   {easing.cubicBezier}
                 </div>
               )}
@@ -142,7 +142,7 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
       </div>
 
       {/* Custom Easing Input */}
-      <div className="pt-2 border-t border-[#3a3a3a]">
+      <div className="pt-4-sm border-t border-[#3a3a3a]">
         {!showCustomInput ? (
           <button
             onClick={() => setShowCustomInput(true)}
@@ -151,9 +151,9 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
             + Add Custom Easing
           </button>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-4-sm">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-300 mb-4-sm">
                 Custom Cubic Bezier
               </label>
               <input
@@ -163,11 +163,11 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
                 placeholder="cubic-bezier(0.61, 1, 0.88, 1)"
                 className="w-full p-2 text-sm bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors font-mono"
               />
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs text-gray-500 mt-4-sm">
                 Enter a cubic-bezier function (e.g., cubic-bezier(0.61, 1, 0.88, 1))
               </div>
             </div>
-            <div className="flex space-x-2">
+            <div className="flex gap-4-sm">
               <button
                 onClick={handleCustomEasing}
                 disabled={!customEasing.trim()}
@@ -191,8 +191,8 @@ export default function EasingSelector({ value, onChange }: EasingSelectorProps)
 
       {/* Current Selection Display */}
       {value && (
-        <div className="pt-2 border-t border-[#3a3a3a]">
-          <div className="text-xs text-gray-400 mb-1">Current Easing:</div>
+        <div className="pt-4-sm border-t border-[#3a3a3a]">
+          <div className="text-xs text-gray-400 mb-4-sm">Current Easing:</div>
           <div className="text-sm font-mono text-blue-400 bg-[#2a2a2a] p-2 rounded">
             {Array.isArray(value) ? `[${value.join(', ')}]` : value}
           </div>
