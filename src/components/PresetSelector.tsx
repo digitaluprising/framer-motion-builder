@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { AnimationConfig } from '@/app/page';
 import { AnimationPreset, PRESET_CATEGORIES, ANIMATION_PRESETS } from '@/types/presets';
 import ExpandableSection from './ExpandableSection';
@@ -9,6 +10,7 @@ interface PresetSelectorProps {
   onPresetSelect: (config: AnimationConfig) => void;
   currentConfig: AnimationConfig;
 }
+
 
 export default function PresetSelector({ onPresetSelect, currentConfig }: PresetSelectorProps) {
   const [selectedCategory, setSelectedCategory] = useState<keyof typeof PRESET_CATEGORIES>('micro-interactions');
@@ -84,14 +86,32 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
     <ExpandableSection title="Animation Presets" defaultExpanded={true}>
       <div className="space-y-4">
         {/* Search */}
-        <div>
+        <div className="relative">
           <input
             type="text"
             placeholder="Search presets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full p-3 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            className="w-full p-3 pr-10 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
           />
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-gray-400"
+            >
+              <path
+                d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Category Filter */}
@@ -101,7 +121,7 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
               <button
                 key={key}
                 onClick={() => setSelectedCategory(key as keyof typeof PRESET_CATEGORIES)}
-                className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
+                className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-200 hover:scale-105 ${
                   selectedCategory === key
                     ? 'bg-blue-500 text-white'
                     : 'bg-[#2a2a2a] text-gray-300 hover:bg-[#3a3a3a]'
@@ -114,34 +134,52 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
         </div>
 
         {/* Preset Grid */}
-        <div className="grid grid-cols-1 gap-4 max-h-64 overflow-y-auto">
-          {filteredPresets.length > 0 ? (
-            filteredPresets.map((preset) => (
-              <div
-                key={preset.id}
-                onClick={() => handlePresetSelect(preset)}
-                className={`p-3 rounded-lg border cursor-pointer transition-all hover:scale-[1.02] ${
-                  isCurrentConfig(preset)
-                    ? 'border-blue-500 bg-blue-500/10'
-                    : 'border-[#3a3a3a] bg-[#2a2a2a] hover:border-[#4a4a4a] hover:bg-[#3a3a3a]'
-                }`}
+        <div className="grid grid-cols-2 gap-3 max-h-64 overflow-y-auto">
+          <AnimatePresence mode="wait">
+            {filteredPresets.length > 0 ? (
+              <motion.div
+                key="presets"
+                className="contents"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
+                {filteredPresets.map((preset, index) => (
+                  <motion.div
+                    key={preset.id}
+                    onClick={() => handlePresetSelect(preset)}
+                    className={`p-3 rounded-lg border cursor-pointer group ${
+                      isCurrentConfig(preset)
+                        ? 'border-blue-500 bg-blue-500/10'
+                        : 'border-[#3a3a3a] bg-[#2a2a2a] hover:border-[#4a4a4a] hover:bg-[#3a3a3a]'
+                    }`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.08,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                  >
                 <div className="flex items-start gap-4">
                   {/* Thumbnail */}
-                  <div className={`w-12 h-12 rounded-lg flex-shrink-0 ${preset.thumbnail} flex items-center justify-center`}>
-                    <div className="w-6 h-6 bg-white/20 rounded-sm"></div>
+                  <div className={`w-12 h-12 rounded-lg flex-shrink-0 ${preset.thumbnail} flex items-center justify-center group-hover:scale-101 transition-transform duration-200`}>
+                    <div className="w-6 h-6 bg-white/20 rounded-sm group-hover:scale-105 transition-transform duration-200"></div>
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <h4 className="text-sm font-medium text-white truncate">
-                        {preset.name}
-                        {preset.id.startsWith('custom-') && (
-                          <span className="ml-2 text-xs text-purple-400">Custom</span>
-                        )}
-                      </h4>
-                      <div className="flex items-center gap-2">
+                      <div className="flex-1 min-w-0 group-hover:scale-101 transition-transform duration-200">
+                        <h4 className="text-sm font-medium text-white truncate">
+                          {preset.name}
+                          {preset.id.startsWith('custom-') && (
+                            <span className="ml-2 text-xs text-purple-400">Custom</span>
+                          )}
+                        </h4>
+                      </div>
+                      <div className="flex items-center gap-2 group-hover:scale-101 transition-transform duration-200">
                         {isCurrentConfig(preset) && (
                           <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                         )}
@@ -159,10 +197,10 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                         )}
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-2 line-clamp-2">
+                    <p className="text-xs text-gray-400 mt-1 line-clamp-2 group-hover:scale-101 transition-transform duration-200">
                       {preset.description}
                     </p>
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-1 group-hover:scale-101 transition-transform duration-200">
                       <span className="text-xs text-gray-500 capitalize">
                         {preset.category.replace('-', ' ')}
                       </span>
@@ -172,15 +210,24 @@ export default function PresetSelector({ onPresetSelect, currentConfig }: Preset
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <div className="text-center py-8">
-              <div className="text-gray-400 text-sm">
-                {searchQuery ? 'No presets found matching your search.' : 'No presets available for this category.'}
-              </div>
-            </div>
-          )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="no-presets"
+                className="text-center py-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="text-gray-400 text-sm">
+                  {searchQuery ? 'No presets found matching your search.' : 'No presets available for this category.'}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Quick Actions */}

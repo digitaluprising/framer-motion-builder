@@ -147,10 +147,10 @@ export default function Home() {
       
       {/* Main Content - Full height minus header */}
       <main className="pt-16 h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-4rem)] p-3 gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-4rem)] p-3 pb-6 gap-3">
           {/* Controls - Bottom on mobile, Left on desktop */}
           <motion.div 
-            className="order-2 lg:order-1 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]"
+            className="order-2 lg:order-1 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1.5rem)]"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -164,7 +164,7 @@ export default function Home() {
           
           {/* Preview - Top on mobile, Right on desktop */}
           <motion.div 
-            className="order-1 lg:order-2 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1rem)]"
+            className="order-1 lg:order-2 h-[calc(50vh-2rem)] lg:h-[calc(100vh-4rem-1.5rem)]"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
