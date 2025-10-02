@@ -75,6 +75,7 @@ const defaultConfig: AnimationConfig = {
 
 export default function Home() {
   const [config, setConfig] = useState<AnimationConfig>(defaultConfig);
+  const [showCredits, setShowCredits] = useState(false);
 
   const updateConfig = (updates: Partial<AnimationConfig>) => {
     setConfig(prev => ({ ...prev, ...updates }));
@@ -93,8 +94,16 @@ export default function Home() {
               Motion Builder
             </h1>
           </div>
-          <div className="text-sm text-gray-400">
-            Prototype animations with Framer Motion
+          <div className="flex items-center space-x-4">
+            <div className="text-sm text-gray-400">
+              Prototype animations with Framer Motion
+            </div>
+            <button
+              onClick={() => setShowCredits(true)}
+              className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Credits
+            </button>
           </div>
         </div>
       </header>
@@ -113,6 +122,76 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Credits Modal */}
+      {showCredits && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 w-full max-w-md max-h-[80vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-white">Credits</h3>
+              <button
+                onClick={() => setShowCredits(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="space-y-4 text-sm text-gray-300">
+              <div>
+                <h4 className="font-medium text-white mb-2">Built with</h4>
+                <ul className="space-y-1 ml-4">
+                  <li>• <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Next.js</a> - React framework</li>
+                  <li>• <a href="https://www.framer.com/motion/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Framer Motion</a> - Animation library</li>
+                  <li>• <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Tailwind CSS</a> - Styling</li>
+                  <li>• <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">TypeScript</a> - Type safety</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-medium text-white mb-2">Easing Functions</h4>
+                <p className="text-gray-400">
+                  Easing functions inspired by <a href="https://easings.net" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">easings.net</a> - 
+                  A comprehensive collection of easing functions for web animations.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-medium text-white mb-2">Features</h4>
+                <ul className="space-y-1 ml-4 text-gray-400">
+                  <li>• 60+ predefined easing functions</li>
+                  <li>• Custom cubic-bezier support</li>
+                  <li>• Animation presets</li>
+                  <li>• Real-time preview</li>
+                  <li>• Mobile responsive design</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-medium text-white mb-2">Project by</h4>
+                <p className="text-gray-300">
+                  <a 
+                    href="https://www.tomhuynh.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    Tom Huynh
+                  </a>
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-[#3a3a3a]">
+                <p className="text-gray-500 text-xs">
+                  Built with ❤️ for the animation community
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
